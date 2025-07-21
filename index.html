@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breloki dla TWOJEJ firmy - Brelokomania</title>
+    <meta name="description" content="Personalizowane breloki NFC dla firm. Tworzymy nowoczesne, funkcjonalne i estetyczne breloki z Twoim logo. Szybka realizacja!">
+    
+    <style>
+        nav
+        {
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            right: 0px;
+            display: flex;
+            justify-content: center;
+            z-index: 998;
+            padding: 10px;
+        }
+
+        .dInsideNav
+        {
+            background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent white */
+            backdrop-filter: blur(10px) saturate(180%); /* Blur and slightly saturate the background */
+            -webkit-backdrop-filter: blur(10px) saturate(180%); /* For Safari compatibility */
+            border-radius: 100px;
+            border: 1px solid rgba(255, 255, 255, 0.125); /* Subtle white border */
+            box-shadow: 0 8px 32px 0 rgba(67, 79, 240, 0.171); /* Soft shadow */
+            color: #747474; /* Text color for contrast */  
+            display: flex;
+            position: relative;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        .dLoginIcon
+        {
+            background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent white */
+            backdrop-filter: blur(10px) saturate(180%); /* Blur and slightly saturate the background */
+            -webkit-backdrop-filter: blur(10px) saturate(180%); /* For Safari compatibility */
+            border-radius: 100px;
+            border: 1px solid rgba(255, 255, 255, 0.125); /* Subtle white border */
+            box-shadow: 0 8px 32px 0 rgba(67, 79, 240, 0.171); /* Soft shadow */
+            color: #747474; /* Text color for contrast */  
+            display: flex;
+            position: relative;
+            z-index: 999;
+            position: fixed;
+            right: 30px;
+            top: 10px;
+            height: 56px;
+            width: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+        }
+
+        .dCloseUserInfo
+        {
+            background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent white */
+            backdrop-filter: blur(10px) saturate(180%); /* Blur and slightly saturate the background */
+            -webkit-backdrop-filter: blur(10px) saturate(180%); /* For Safari compatibility */
+            border-radius: 100px;
+            border: 1px solid rgba(255, 255, 255, 0.125); /* Subtle white border */
+            box-shadow: 0 8px 32px 0 rgba(67, 79, 240, 0.171); /* Soft shadow */
+            color: #747474; /* Text color for contrast */  
+            display: flex;
+            position: relative;
+            z-index: 999;
+            position: fixed;
+            right: 30px;
+            top: 10px;
+            height: 56px;
+            width: 56px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1001;
+        }
+
+        .dLoginIconMenu
+        {
+            position: fixed;
+            top: 0px;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+            background-color: rgba(0, 0, 0, 0.25);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            display: none;
+        }
+
+        .dBagIcon
+        {
+            background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent white */
+            backdrop-filter: blur(10px) saturate(180%); /* Blur and slightly saturate the background */
+            -webkit-backdrop-filter: blur(10px) saturate(180%); /* For Safari compatibility */
+            border-radius: 100px;
+            border: 1px solid rgba(255, 255, 255, 0.125); /* Subtle white border */
+            box-shadow: 0 8px 32px 0 rgba(67, 79, 240, 0.171); /* Soft shadow */
+            color: #747474; /* Text color for contrast */  
+            display: flex;
+            position: relative;
+            z-index: 999;
+            position: fixed;
+            right: 101px;
+            top: 10px;
+            height: 56px;
+            width: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        .dMainFrame
+        {
+            position: fixed;
+            top: 0px;
+            bottom: 0px;
+            right: 0px;
+            left: 0px;
+            overflow: hidden;
+            background-color: white;
+        }
+
+        *
+        {
+            font-family: "Roboto", sans-serif;
+            font-weight: 500;
+            font-style: normal;
+            margin: 0px;
+            padding: 0px;
+            margin: 0px;
+            color: var(--font-color);
+            user-select: none; 
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+
+        .dSettingsFrame
+        {
+            background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent white */
+            backdrop-filter: blur(10px) saturate(180%); /* Blur and slightly saturate the background */
+            -webkit-backdrop-filter: blur(10px) saturate(180%); /* For Safari compatibility */
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.125); /* Subtle white border */
+            box-shadow: 0 8px 32px 0 rgba(67, 79, 240, 0.171); /* Soft shadow */
+            color: #747474; /* Text color for contrast */  
+            display: flex;
+            position: relative;
+            z-index: 1000;
+            position: absolute;
+            right: 50px;
+            top: 100px;
+            bottom: 50px;
+            width: 500px;
+            flex-direction: column;
+        }
+
+        .dFrame
+        {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .dInsideNavCard
+        {
+            width: 150px;
+            z-index: 1000;
+        }
+
+        .dSelector
+        {
+            position: absolute;
+            top: 10px;
+            bottom: 10px;
+            left: 10px;
+            width: 150px;
+            transition: left 0.5s;
+        }
+
+        .dInsideSelector
+        {
+            background-color: rgba(44, 44, 44, 0.158); /* Semi-transparent white */
+            backdrop-filter: blur(10px) saturate(180%); /* Blur and slightly saturate the background */
+            -webkit-backdrop-filter: blur(10px) saturate(180%); /* For Safari compatibility */
+            border-radius: 100px;
+            border: 1px solid rgba(255, 255, 255, 0.125); /* Subtle white border */
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); /* Soft shadow */
+            
+            color: #747474; /* Text color for contrast */  
+            display: flex;
+            position: relative;
+            height: 100%;
+        }
+
+        .dInsideNavCard button
+        {
+            border: 0px;
+            height: 100%;
+            width: 100%;
+            padding: 20px;
+            background-color: transparent;
+        }
+
+        button p
+        {
+            transition: color 0.5s;
+            font-weight: 400;
+        }
+
+        .dLogo
+        {
+            position: fixed;
+            left: 10px;
+            top: 10px;
+            z-index: 1000;
+            color: white;
+            display: flex;
+            align-items: center;
+            height: 56px;
+        }
+
+        .container {
+            background: url('nowe-tlo.jpg');
+            background-size: cover;
+            position: relative;
+            width: 500px;
+            height: 300px;
+            }
+
+        .green-screen {
+            mix-blend-mode: multiply; /* lub 'darken', 'color-burn', zależnie od efektu */
+            width: 100%;
+            height: 100%;
+        }
+        
+        #container-3d {
+            width: 75%;
+            height: 100%;
+            overflow: hidden; 
+        }
+
+        canvas {
+            /* Zapobiega problemom z wyświetlaniem */
+            display: block; 
+        }
+
+        .buyNow
+        {
+            width: calc(100% - 40px);
+            border: none;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 100px;
+            background-color: rgba(25, 53, 148, 0.384); /* Semi-transparent white */
+            backdrop-filter: blur(10px) saturate(180%); /* Blur and slightly saturate the background */
+            -webkit-backdrop-filter: blur(10px) saturate(180%); /* For Safari compatibility */
+            border-radius: 100px;
+            border: 1px solid rgba(255, 255, 255, 0.125); /* Subtle white border */
+            box-shadow: 0 8px 32px 0 rgba(67, 79, 240, 0.171); /* Soft shadow */
+            color: #747474; /* Text color for contrast */  
+            display: flex;
+            justify-content: center;
+            position: relative;
+            padding-left: 10px;
+            padding-right: 10px;
+            text-align: center;
+            color: white;
+        }
+
+        .dSettingsLabel
+        {
+            padding: 20px;
+            font-size: 40px;
+            display: flex;
+        }
+
+        .dSelectSetting
+        {
+            aspect-ratio: 1 / 1;
+            width: calc(100% - 20px);
+            margin: 10px;
+            background-color: transparent;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.125); /* Subtle white border */
+            box-shadow: 0 8px 10px 0 rgba(67, 79, 240, 0.171); /* Soft shadow */
+            border-radius: 20px;
+            margin-bottom: 10px;
+            margin-top: 10px;
+        }
+
+        .launchEditSettingsPanel
+        {
+            width: calc(100% - 40px);
+            border: none;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 100px;
+            background-color: rgba(25, 53, 148, 0.384); /* Semi-transparent white */
+            backdrop-filter: blur(10px) saturate(180%); /* Blur and slightly saturate the background */
+            -webkit-backdrop-filter: blur(10px) saturate(180%); /* For Safari compatibility */
+            border-radius: 100px;
+            border: 1px solid rgba(255, 255, 255, 0.125); /* Subtle white border */
+            box-shadow: 0 8px 32px 0 rgba(67, 79, 240, 0.171); /* Soft shadow */
+            color: #747474; /* Text color for contrast */  
+            display: flex;
+            justify-content: center;
+            position: relative;
+            padding-left: 10px;
+            padding-right: 10px;
+            text-align: center;
+            color: white;
+        }
+
+        .launchEditSettingsPanel
+        {
+            display: none;
+        }
+
+        .closeWindow
+        {
+            background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent white */
+            backdrop-filter: blur(10px) saturate(180%); /* Blur and slightly saturate the background */
+            -webkit-backdrop-filter: blur(10px) saturate(180%); /* For Safari compatibility */
+            border-radius: 100px;
+            border: 1px solid rgba(255, 255, 255, 0.125); /* Subtle white border */
+            box-shadow: 0 8px 32px 0 rgba(67, 79, 240, 0.171); /* Soft shadow */
+            color: #747474; /* Text color for contrast */  
+            display: flex;
+            position: relative;
+            width: 56px;
+            height: 56px;
+            background-image: url("close.png");
+        }
+
+        .touchIt
+        {
+            position: absolute; 
+            bottom: 100px; 
+            left: 250px;
+            right: 100px;
+        }
+
+        .why
+        {
+            position: absolute; 
+            bottom: 100px; 
+            right: 50px; 
+            width: 50%;
+        }
+
+        .touchItImageHolder
+        {
+            flex: 2;
+        }
+
+        .iconLogoHolder img
+        {
+            width: calc(100% - 200px);
+        }
+
+        .touchItImageHolder img
+        {
+            aspect-ratio: 1 / 1;
+            width: calc(75%);
+        }
+
+        .dBrelokNFC
+        {
+            flex:1; 
+           display: flex; 
+           justify-content: center; 
+           align-items: center; 
+           flex-direction: column;
+        }
+
+        .touchIt p:first-child 
+        {
+            font-size: 100px;
+        }
+
+        .touchIt p:nth-child(2) 
+        {
+            font-size: 25px;
+        }
+
+        .why p:first-child 
+        {
+            font-size: 100px;
+        }
+
+        .why p:nth-child(2) 
+        {
+            font-size: 25px;
+        }
+
+        .dBrelokNFC p:nth-child(1){
+            font-size: 100px;
+        }
+
+        .iconLogoHolder
+        {
+            flex:1; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center;
+        }
+
+        
+
+        @media screen and (max-width: 1200px) 
+        {
+            .dSettingsFrame 
+            {
+                width: auto;
+                left: 50px;
+                right: 50px;
+                transition: scale 0.5s, opacity 0.5s, transform 0.5s;
+            }
+
+            .launchEditSettingsPanel
+            {
+                display: block;
+            }
+            
+            .closeWindow
+            {
+                display: block;
+            }
+
+            #container-3d
+            {
+                width: 100%;
+            }
+
+            .touchIt
+            {
+                left: 20px;
+                bottom: 150px;
+                width: 75%;
+            }
+
+            .touchItImageHolder
+            {
+                display: flex;
+                align-items: center;
+            }
+
+            .dBrelokNFC
+            {
+                margin-right: 40px;
+                display: flex;
+                align-items:start;
+            }
+
+            .iconLogoHolder img
+            {
+                width: 100%;
+            }
+
+            .touchIt p:nth-child(2) 
+            {
+                font-size: 20px;
+            }
+        }
+
+        @media screen and (max-width: 900px) 
+        {
+            .iconLogoHolder 
+            {
+                display: none;
+            }
+
+            .dInsideNav
+            {
+                display: none;
+            }
+
+            .touchIt p:first-child 
+            {
+                font-size: 50px;
+            }
+
+            .dSettingsFrame div div p
+            {
+                height: 40px;
+                font-size: 14px;
+            }
+
+            .touchIt p:nth-child(2) 
+            {
+                font-size: 15px;
+            }
+
+            #Section_2 div .touchItImageHolder
+            {
+                display: none;
+            }
+
+            .dBrelokNFC
+            {
+                margin-left: 40px;
+            }
+
+            .dBrelokNFC p:nth-child(1)
+            {
+                font-size: 75px;
+            }
+
+            .why
+            {
+                display: block;
+                width: calc(100% - 40px);
+                padding: 20px;
+                left: 0px;
+                right: 0px;
+            }
+
+            .why p:nth-child(1) 
+            {
+                font-size: 50px;
+            }
+        }
+    </style>
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body style="overflow: hidden;">
+    
+
+    <nav>
+        <div class="dInsideNav">
+            <div class="dInsideNavCard">
+                <button onclick="changeSelector(0)">
+                    <p id="Text_0">Strona główna</p>
+                </button>
+            </div>
+
+            <div class="dInsideNavCard">
+                <button onclick="changeSelector(1)">
+                    <p id="Text_1">Jak to działa?</p>
+                </button>
+            </div>
+
+            <div class="dInsideNavCard">
+                <button onclick="changeSelector(2)">
+                    <p id="Text_2">Dlaczego warto?</p>
+                </button>
+            </div>
+
+            <div class="dInsideNavCard">
+                <button onclick="changeSelector(3)">
+                    <p id="Text_3">Warianty</p>
+                </button>
+            </div>
+
+            <div id="selector" class="dSelector">
+                <div class="dInsideSelector">
+                    
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header>
+    <h1>Breloki NFC jako skuteczna forma promocji i cyfrowa wizytówka firmy</h1>
+  </header>
+
+  <main>
+    <article>
+
+      <section>
+        <h2>Czym są breloki NFC i jak działają?</h2>
+        <p><strong>Breloki NFC</strong> to nowoczesne gadżety z wbudowanym chipem NFC (Near Field Communication), które umożliwiają błyskawiczne przesyłanie danych – wystarczy zbliżyć brelok do smartfona, aby uruchomić zapisany w nim link, wizytówkę, stronę www lub formularz kontaktowy.</p>
+        <p>Technologia NFC jest kompatybilna z większością współczesnych smartfonów i nie wymaga instalacji żadnych aplikacji ani użycia kamery – to szybsze i wygodniejsze niż kod QR.</p>
+      </section>
+
+      <section>
+        <h2>Dlaczego warto używać breloków NFC w promocji?</h2>
+        <p>W dobie cyfrowej komunikacji i ograniczonej uwagi klientów, firmy muszą wyróżniać się innowacyjnymi metodami dotarcia do odbiorców. <strong>Breloki NFC</strong> to inteligentne narzędzie marketingowe, które łączy funkcję <strong>gadżetu reklamowego i cyfrowej wizytówki</strong>.</p>
+
+        <h3>Korzyści z wykorzystania breloków NFC w marketingu:</h3>
+        <ul>
+          <li><strong>Błyskawiczny dostęp do danych kontaktowych</strong> – klienci zbliżają brelok do telefonu i automatycznie zapisują numer, e-mail, profil LinkedIn lub vCard.</li>
+          <li><strong>Budowanie nowoczesnego wizerunku marki</strong> – pokazujesz, że Twoja firma korzysta z nowoczesnych technologii.</li>
+          <li><strong>Praktyczny gadżet reklamowy</strong> – brelok zawsze jest pod ręką, w przeciwieństwie do papierowej wizytówki.</li>
+          <li><strong>Wielokrotne użycie</strong> – tag NFC można przeprogramować lub ustawić jako uniwersalny link do dynamicznej strony.</li>
+          <li><strong>Lepsze zaangażowanie klientów</strong> – dzięki NFC użytkownicy szybciej podejmują działanie: zapisują dane, odwiedzają stronę, składają zamówienie.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Jakie informacje można zapisać w breloku NFC?</h2>
+        <p>Możliwości są niemal nieograniczone. Najczęściej programujemy breloki NFC do uruchamiania:</p>
+        <ul>
+          <li>cyfrowej wizytówki (vCard, wizytówka online, profil LinkedIn)</li>
+          <li>strony internetowej firmy lub portfolio</li>
+          <li>formularza zapisu do newslettera</li>
+          <li>profilu w social media (Instagram, Facebook, TikTok)</li>
+          <li>oferty lub katalogu produktowego online</li>
+          <li>linku do pobrania aplikacji lub PDF</li>
+          <li>numeru telefonu lub wiadomości e-mail</li>
+        </ul>
+        <p>Jeden dotyk breloka do telefonu pozwala klientowi błyskawicznie zdobyć kluczowe informacje o Twojej firmie lub osobie – bez szukania, bez wpisywania, bez błędów.</p>
+      </section>
+
+      <section>
+        <h2>Breloki NFC jako gadżety promocyjne do rozdawania</h2>
+        <p>Tradycyjne gadżety reklamowe – takie jak długopisy czy smycze – tracą na skuteczności. <strong>Brelok NFC</strong> to unikalny, funkcjonalny i zapadający w pamięć upominek, który możesz rozdawać podczas:</p>
+        <ul>
+          <li>targów i wydarzeń branżowych,</li>
+          <li>konferencji i spotkań networkingowych,</li>
+          <li>szkoleń i prezentacji produktów,</li>
+          <li>akcji promocyjnych,</li>
+          <li>kampanii outdoorowych i BTL,</li>
+          <li>rekrutacji i onboardingu pracowników.</li>
+        </ul>
+        <p>Każdy, kto otrzyma brelok NFC, może natychmiast zapisać Twoje dane lub sprawdzić ofertę, co znacząco zwiększa szanse na konwersję i utrwalenie marki w świadomości odbiorcy.</p>
+      </section>
+
+      <section>
+        <h2>Dlaczego Brelokomania?</h2>
+        <p>W <strong>Brelokomania</strong> specjalizujemy się w tworzeniu <strong>breloków NFC na zamówienie</strong> dla firm i osób prywatnych. Oferujemy:</p>
+        <ul>
+          <li>kompletną personalizację: kolor, materiał, kształt, nadruk logo,</li>
+          <li>profesjonalne programowanie tagów NFC,</li>
+          <li>możliwość współpracy przy kampaniach marketingowych,</li>
+          <li>szybką realizację i doradztwo przy wyborze chipu (NTAG213, NTAG215, NTAG216).</li>
+        </ul>
+        <p>Nasze breloki są trwałe, estetyczne i w pełni funkcjonalne – gotowe do rozdawania klientom, partnerom i gościom wydarzeń firmowych.</p>
+      </section>
+
+      <section>
+        <h2>Zamów breloki NFC dla swojej marki</h2>
+        <p>Skontaktuj się z nami i stwórz własną linię <strong>breloków NFC jako narzędzi marketingowych</strong>. To nowoczesny sposób na zwiększenie zasięgu, zapamiętywalności i konwersji.</p>
+        <p>Postaw na <strong>inteligentną promocję</strong> – postaw na <strong>Brelokomania</strong>.</p>
+      </section>
+
+      <section>
+        <h2>Czym są materiały promocyjne?</h2>
+        <p><strong>Materiały promocyjne</strong> to narzędzia marketingowe wykorzystywane przez firmy do budowania rozpoznawalności marki, utrwalania pozytywnego wizerunku oraz wspierania sprzedaży. Do najczęściej stosowanych należą <strong>gadżety reklamowe</strong>, czyli praktyczne przedmioty codziennego użytku, oznakowane logo firmy lub jej hasłem.</p>
+        <p>Współczesny marketing opiera się nie tylko na reklamie cyfrowej – fizyczne materiały promocyjne pozostają skuteczne, bo docierają bezpośrednio do odbiorcy i budują relację emocjonalną z marką.</p>
+      </section>
+
+      <section>
+        <h2>Gadżety reklamowe – dlaczego są tak skuteczne?</h2>
+        <p><strong>Gadżety firmowe</strong> to więcej niż upominki. To forma trwałej reklamy, która pozostaje z klientem na długo. Praktyczny, estetyczny i dobrze zaprojektowany gadżet to doskonały nośnik Twojej marki.</p>
+
+        <h3>Korzyści z wykorzystania gadżetów reklamowych:</h3>
+        <ul>
+          <li><strong>Budowanie rozpoznawalności</strong> – logo Twojej firmy jest stale widoczne w codziennym życiu użytkownika.</li>
+          <li><strong>Wzmacnianie wizerunku</strong> – dobrze dobrany gadżet świadczy o profesjonalizmie i dbałości o klienta.</li>
+          <li><strong>Wysoka skuteczność kosztowa</strong> – jeden gadżet może działać jako reklama przez wiele miesięcy.</li>
+          <li><strong>Bezpośredni kontakt z marką</strong> – użytkownik dotyka, używa i zapamiętuje Twoją firmę.</li>
+          <li><strong>Możliwość personalizacji</strong> – kolory, nadruki, teksty – wszystko może być dopasowane do strategii marki.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Popularne rodzaje materiałów promocyjnych</h2>
+        <p>W zależności od branży i grupy docelowej możesz wybrać różne kategorie materiałów reklamowych. Oto najczęściej wybierane:</p>
+
+        <h3>1. Gadżety biurowe</h3>
+        <ul>
+          <li>długopisy z logo</li>
+          <li>notesy i kalendarze firmowe</li>
+          <li>pendrive’y i powerbanki</li>
+        </ul>
+
+        <h3>2. Gadżety codziennego użytku</h3>
+        <ul>
+          <li>kubki reklamowe</li>
+          <li>torby materiałowe</li>
+          <li>smary i breloki firmowe</li>
+        </ul>
+
+        <h3>3. Innowacyjne gadżety elektroniczne</h3>
+        <ul>
+          <li>breloki NFC</li>
+          <li>ładowarki indukcyjne z logo</li>
+          <li>trackery Bluetooth</li>
+        </ul>
+
+        <h3>4. Gadżety ekologiczne</h3>
+        <ul>
+          <li>bambusowe długopisy i notesy</li>
+          <li>opakowania biodegradowalne</li>
+          <li>produkty z recyklingu z oznakowaniem marki</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Gdzie i kiedy wykorzystywać materiały promocyjne?</h2>
+        <p><strong>Gadżety firmowe</strong> sprawdzają się w wielu sytuacjach – od wydarzeń firmowych po kampanie sprzedażowe:</p>
+        <ul>
+          <li>targi branżowe i konferencje</li>
+          <li>kampanie promocyjne BTL</li>
+          <li>wysyłki PR lub influencer marketing</li>
+          <li>nagrody w konkursach i akcjach lojalnościowych</li>
+          <li>pakiety powitalne dla nowych klientów lub pracowników</li>
+        </ul>
+        <p>To właśnie w tych momentach dobrze zaprojektowany gadżet może stać się elementem zaskoczenia i zapamiętania Twojej marki.</p>
+      </section>
+
+      <section>
+        <h2>Personalizacja – klucz do skutecznego gadżetu</h2>
+        <p>Sam przedmiot to za mało – liczy się sposób jego wykonania. W <strong>Brelokomania</strong> oferujemy <strong>pełną personalizację gadżetów reklamowych</strong>, w tym:</p>
+        <ul>
+          <li>druk UV lub tampodruk (nadruki logo, QR, dane kontaktowe)</li>
+          <li>grawer laserowy na metalu lub drewnie</li>
+          <li>dobór kolorystyki do identyfikacji wizualnej marki</li>
+          <li>programowanie funkcjonalnych elementów – np. NFC</li>
+        </ul>
+        <p>Dzięki temu każdy gadżet nie tylko promuje, ale i opowiada historię Twojej marki.</p>
+      </section>
+
+      <section>
+        <h2>Materiały promocyjne z Brelokomania – dlaczego warto?</h2>
+        <p>Jesteśmy ekspertami w produkcji i dostawie <strong>innowacyjnych materiałów reklamowych</strong>. Niezależnie od tego, czy potrzebujesz setek sztuk na duże wydarzenie, czy limitowanej serii premium dla VIP-ów – przygotujemy idealne rozwiązanie:</p>
+        <ul>
+          <li>nowoczesne technologie (NFC, Bluetooth)</li>
+          <li>trwałe i estetyczne wykonanie</li>
+          <li>szybka realizacja i elastyczność zamówień</li>
+          <li>doradztwo przy wyborze formy i funkcji gadżetu</li>
+        </ul>
+        <p><strong>Zainwestuj w jakość, która pracuje dla Ciebie – przez wiele miesięcy po rozdaniu.</strong></p>
+      </section>
+
+      <section>
+        <h2>Podsumowanie</h2>
+        <p><strong>Materiały promocyjne</strong> to nieodzowny element skutecznego marketingu. Dzięki nim marka zyskuje widoczność, a odbiorcy zapamiętują ją na długo. <strong>Gadżety reklamowe i firmowe</strong> to nie tylko praktyczne upominki – to nośniki wartości, tożsamości i przekazu marki.</p>
+        <p>Skontaktuj się z nami i stwórz linię materiałów promocyjnych, które będą naprawdę działać.</p>
+      </section>
+    </article>
+  </main>
+
+    <div class="dLoginIcon" onclick="openUserInfo()">
+        <img src="account_circle_56dp_E3E3E3_FILL0_wght400_GRAD0_opsz48.png" width="40px" height="40px">
+
+        
+    </div>
+
+    <div class="dCloseUserInfo" onclick="closeUserInfo()" id="dCloseUserInfo">
+        <img src="close.png" width="40px" height="40px">
+
+        
+    </div>
+
+    <div class="dLoginIconMenu" id="userInfo">
+
+    </div>
+
+    <div class="dBagIcon">
+        <img src="shopping_cart_56dp_E3E3E3_FILL0_wght400_GRAD0_opsz48.png" width="40px" height="40px">
+
+        
+    </div>
+    
+    <div class="dMainFrame">
+        <div style="height: 100%; width: 100%; position: absolute; top: 1080px; ">
+            <div class="dFrame" id="Section_0">
+                <div style="display: flex; height: 100%;">
+                    <div class="iconLogoHolder">
+                        <img src="brelog_main.png">
+                    </div>
+
+                    <div class="dBrelokNFC">
+                        <p style="font-weight: bolder;">BRELOK NFC</p>
+                        <p style="font-weight: 200; font-size: 30px;">DLA <span style="font-weight: 800;">TWOJEGO</span> BIZNESU</p>
+                    </div>
+                </div>
+                
+            </div>
+
+            <div class="dFrame" id="Section_1">
+                <div style="display: flex; width: 100%; height: 100%; position: relative;">
+                    <div class="touchIt">
+                        <p style="font-weight: bolder;">PRZYBLIŻ</p>
+                        <p style="font-weight: 200; ">na telefonie <span style="font-weight: bold;">TWOJEGO</span> klienta pojawi się automatycznie - strona internetowa bądź kontakt do <span style="font-weight: bold;">CIEBIE</span></p>
+                    </div>
+
+                    <div style="flex: 1;"></div>
+
+                    <div class="touchItImageHolder">
+                        <img src="phoneArm.png" style="width: 100%;">
+                    </div>
+                </div>
+            </div>
+
+            <div class="dFrame" id="Section_2">
+                <div style="display: flex; width: 100%; height: 100%; position: relative;">
+                    <div class="touchItImageHolder">
+                        <img src="dlaczego.png">
+                    </div>
+
+                    <div style="flex: 1;"></div>
+
+                    <div class="why">
+                        <p style="font-weight: bolder;">Dlaczego warto?</p>
+                        <p style="font-weight: 200; ">Udostępniaj dane kontaktowe lub materiały marketingowe jednym dotknięciem – szybko, elegancko i bez zbędnych formalności. Pokaż, że idziesz z duchem czasu. Zdobądź swoją wizytówkę XXI wieku i wyróżnij się już dziś!</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dFrame" id="Section_3">
+                <div id="container-3d"></div>
+                <div class="dSettingsFrame" id="dSettingsFrame">
+                    <div class="dSettingsLabel">
+                        <p style="font-weight: bolder; font-size: 40px;">Dostosuj</p>
+                        <div style="flex: 1;"></div>
+                        <button onclick="closeSettings()" class="closeWindow"></button>
+                    </div>
+                    <div style="display: flex; flex: 1; padding: 20px; margin-top: 0px; margin-bottom: 0px; overflow: hidden;">
+                        <div style="flex: 1; overflow-y: scroll;" id="selectBase">
+                            <p>Podstawa</p>
+                            <div style="height: 10px;"></div>
+                        </div>
+
+                        <div style="width: 10px;"></div>
+
+                        <div style="flex: 1; overflow-y: scroll;" id="selectFront">
+                            <p>Panel przedni</p>
+                            <div style="height: 10px;"></div>
+                        </div>
+
+                        <div style="width: 10px;"></div>
+
+                        <div style="flex: 1; overflow-y: scroll;" id="selectBack">
+                            <p>Panel tylni</p>
+                            <div style="height: 10px;"></div>
+                        </div>
+                    </div>
+
+                    <button class="buyNow"><p style="font-weight: bolder; font-size: 20px;">Kup teraz</p></button>
+                </div>
+
+                <button class="launchEditSettingsPanel" onclick="openSettings()" style="position: absolute; bottom: 50px; left: 50px; right: 50px; width: auto;"><p style="font-weight: bolder; font-size: 20px;">Skonfiguruj i kup</p></button>
+            </div>
+        </div>
+        
+    </div>
+
+    
+</body>
+
+<script>
+    function loadAllDrafts() {
+        fetch('https://brelokomania.pl/api/elements/get-all', {
+            credentials: 'include'
+        })
+            .then(response => response.json())
+            .then(data => {
+            const allElements = data; // To będzie tablica obiektów elementów
+
+            addBase(data.filter(e=>e.element_types == 0)[0].element_url);
+
+            allElements.forEach(element => {
+                if(element.element_types == 1)
+                {
+                    document.getElementById("selectBack").innerHTML += '<button onclick="addBack(\'' + element.element_url + '\')" class="dSelectSetting">' + element.eleent_name + '</button>';
+                
+                }
+                else if(element.element_types == 0)
+                {
+                    document.getElementById("selectBase").innerHTML += '<button onclick="addBase(\'' + element.element_url + '\')" class="dSelectSetting">' + element.eleent_name + '</button>';
+                
+                }
+                else if(element.element_types == 2)
+                {
+                    document.getElementById("selectFront").innerHTML += '<button onclick="addFront(\'' + element.element_url + '\')" class="dSelectSetting">' + element.eleent_name + '</button>';
+                
+                }
+                
+            });
+
+            getDraft(); // wywołanie kolejnej funkcji
+            })
+            .catch(error => {
+            console.error('Błąd podczas pobierania danych:', error);
+            });
+    }
+
+    loadAllDrafts();
+
+    function openUserInfo()
+    {
+        document.getElementById("userInfo").style.display = "block";
+        document.getElementById("dCloseUserInfo").style.display = "flex";
+    }   
+
+    function closeUserInfo()
+    {
+        document.getElementById("userInfo").style.display = "none";
+        document.getElementById("dCloseUserInfo").style.display = "none";
+    }
+
+    const slaidsCount = 3;
+
+    let blockScroll = false;
+
+    const selectBack = document.getElementById('selectBack');
+
+    selectBack.addEventListener('mouseover', () => {
+        blockScroll = true;
+    });
+
+    selectBack.addEventListener('mouseout', () => {
+        blockScroll = false;
+    });
+
+    const selectFront = document.getElementById('selectFront');
+
+    selectFront.addEventListener('mouseover', () => {
+        blockScroll = true;
+    });
+
+    selectFront.addEventListener('mouseout', () => {
+        blockScroll = false;
+    });
+
+    const selectBase = document.getElementById('selectBase');
+
+    selectBase.addEventListener('mouseover', () => {
+        blockScroll = true;
+    });
+
+    selectBase.addEventListener('mouseout', () => {
+        blockScroll = false;
+    });
+    
+    function goToSection(sectionId) {
+        const section = document.getElementById(sectionId); 
+
+        if (section) 
+        {
+            section.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    }
+
+    let currentIndex = 0;
+    let lastScrollTop = 0;
+
+    let inProgress = false;
+
+    let selfSelecting = false;
+
+    let touchStartY = 0;
+    let touchEndY = 0;
+
+    window.addEventListener("touchstart", function (event) {
+        touchStartY = event.changedTouches[0].clientY;
+    });
+
+    window.addEventListener("touchend", function (event) {
+        touchEndY = event.changedTouches[0].clientY;
+        handleSwipe();
+    });
+
+    function handleSwipe() {
+        const swipeDistance = touchStartY - touchEndY;
+
+        if(!selfSelecting)
+        {
+            if (swipeDistance > 50) 
+            {
+                if(currentIndex < slaidsCount)
+                {
+                    currentIndex = currentIndex + 1;
+                    changeSelector(currentIndex);
+                }
+                else
+                {
+                    console.log("Tutaj autyzm 2");
+                }
+            } 
+            else if (swipeDistance < -50) 
+            {
+                if(currentIndex > 0)
+                {
+                    currentIndex = currentIndex - 1;
+                    changeSelector(currentIndex);
+                }
+                else
+                {
+                    console.log("Tutaj autyzm 1");
+                }
+            }
+        }
+    }
+
+    window.addEventListener("keydown", function (event) {
+        if(!selfSelecting)
+        {
+            if (event.key === "ArrowDown") 
+            {
+                if(currentIndex < slaidsCount)
+                {
+                    currentIndex = currentIndex + 1;
+                    changeSelector(currentIndex);
+                }
+                else
+                {
+                    console.log("Tutaj autyzm 2");
+                }
+            }
+            if (event.key === "ArrowUp") {
+                if(currentIndex > 0)
+                {
+                    currentIndex = currentIndex - 1;
+                    changeSelector(currentIndex);
+                }
+                else
+                {
+                    console.log("Tutaj autyzm 1");
+                }
+            }
+        }
+    });
+
+    window.addEventListener("wheel", function () {
+        if(!selfSelecting)
+        {
+            const delta = event.deltaY;
+
+            if (delta < 0) 
+            {
+                if(currentIndex > 0)
+                {
+                    currentIndex = currentIndex - 1;
+                    changeSelector(currentIndex);
+                }
+                else
+                {
+                    console.log("Tutaj autyzm 1");
+                }
+            } 
+            else 
+            {
+                if(currentIndex < slaidsCount)
+                {
+                    currentIndex = currentIndex + 1;
+                    changeSelector(currentIndex);
+                }
+                else
+                {
+                    console.log("Tutaj autyzm 2");
+                }
+            }
+        }
+        
+    });
+
+    function changeSelector(index)
+    {
+        if(blockScroll)
+        {
+            return;
+        }
+
+        if(!selfSelecting)
+        {
+            selfSelecting = true;
+            document.getElementById("selector").style.left = (((index * 150) + 10) + "px");
+
+            document.getElementById("Text_0").style.color = "#747474";
+            document.getElementById("Text_1").style.color = "#747474";
+            document.getElementById("Text_2").style.color = "#747474";
+            document.getElementById("Text_3").style.color = "#747474";
+
+            currentIndex = index;
+
+            if(index == 0)
+            {
+                document.getElementById("Text_0").style.color = "white";
+                goToSection("Section_0");
+            }
+            else if(index == 1)
+            {
+                document.getElementById("Text_1").style.color = "white";
+                goToSection("Section_1");
+            }
+            else if(index == 2)
+            {
+                document.getElementById("Text_2").style.color = "white";
+                goToSection("Section_2");
+            }
+            else if(index == 3)
+            {
+                document.getElementById("Text_3").style.color = "white";
+                goToSection("Section_3");
+            }
+
+            setTimeout(()=>{
+                selfSelecting = false;
+            }, 600)
+        }
+    }
+
+    function closeSettings()
+    {
+        document.getElementById("dSettingsFrame").style.scale = 0.5;
+        document.getElementById("dSettingsFrame").style.opacity = 0;
+        document.getElementById("dSettingsFrame").style.transform = "rotateX(45deg);";
+
+        setTimeout(()=>{
+            document.getElementById("dSettingsFrame").style.display = "none";
+        }, 500)
+    }
+
+    function openSettings()
+    {
+        document.getElementById("dSettingsFrame").style.display = "flex";
+        document.getElementById("dSettingsFrame").style.scale = 1;
+        document.getElementById("dSettingsFrame").style.opacity = 1;
+
+    }
+
+
+    changeSelector(0);
+</script>
+
+
+<script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.165.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.165.0/examples/jsm/"
+            }
+        }
+    </script>
+
+    <script type="module">
+        import * as THREE from 'three';
+        import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+        import { FBXLoader } from 'three/addons/loaders/FBXLoader.js';
+
+        // 1. ZNAJDUJEMY NASZ POJEMNIK
+        const container = document.getElementById('container-3d');
+
+        const scene = new THREE.Scene();
+
+        // 2. DOSTOSOWUJEMY KAMERĘ I RENDERER DO ROZMIARU POJEMNIKA
+        const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
+        camera.position.set(0, 5, 20);
+
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(container.clientWidth, container.clientHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        renderer.shadowMap.enabled = true;
+        renderer.setClearColor(0xffffff, 1); 
+
+        // 3. WSTAWIAMY CANVAS (renderer.domElement) DO POJEMNIKA
+        container.appendChild(renderer.domElement);
+
+        const controls = new OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.target.set(0, -5, 0);
+        controls.autoRotate = true;
+        controls.autoRotateSpeed = 2; 
+
+        // Ustaw siłę tłumienia - większa wartość = płynniejszy ruch
+        controls.dampingFactor = 1;
+
+        const ambientLight = new THREE.AmbientLight(0xffffff, 1.5);
+        scene.add(ambientLight);
+
+        const directionalLight = new THREE.DirectionalLight(0xffffff, 2.5);
+        directionalLight.position.set(-15, 20, 10);
+        directionalLight.castShadow = false;
+        scene.add(directionalLight);
+
+        const loader = new FBXLoader();
+
+
+        let lastFront = null;      
+        let lastBase = null;  
+        let lastBack = null;  
+
+        function addBase(fbxName)
+        {
+            console.log(fbxName);
+
+            if(lastBase)
+            {
+                scene.remove(lastBase);
+            }
+
+            loader.load(fbxName, (fbxModel) => {
+                // Ustawienie skali modelu
+                fbxModel.scale.set(0.05, 0.05, 0.05);
+
+                // --- DODAJ TĘ LINIĘ, ABY PRZESUNĄĆ MODEL W DÓŁ ---
+                fbxModel.position.y = -5;
+
+                // Pętla ustawiająca cienie
+                fbxModel.traverse((child) => {
+                    if (child.isMesh) {
+                        child.castShadow = false;
+                        child.receiveShadow = false;
+                    }
+                });
+
+                lastBase = fbxModel;
+
+                // Dodanie modelu do sceny
+                scene.add(fbxModel);
+            });
+        }
+
+        function addFront(fbxName)
+        {
+            console.log(fbxName);
+
+            if(lastFront)
+            {
+                scene.remove(lastFront);
+            }
+
+            loader.load(fbxName, (fbxModel) => {
+                // Ustawienie skali modelu
+                fbxModel.scale.set(0.05, 0.05, 0.05);
+
+                // --- DODAJ TĘ LINIĘ, ABY PRZESUNĄĆ MODEL W DÓŁ ---
+                fbxModel.position.y = -5;
+
+                // Pętla ustawiająca cienie
+                fbxModel.traverse((child) => {
+                    if (child.isMesh) {
+                        child.castShadow = false;
+                        child.receiveShadow = false;
+                    }
+                });
+
+                lastFront = fbxModel;
+
+                // Dodanie modelu do sceny
+                scene.add(fbxModel);
+            });
+        }
+
+        function addBack(fbxName)
+        {
+            console.log(fbxName);
+
+            if(lastBack)
+            {
+                scene.remove(lastBack);
+            }
+
+            loader.load(fbxName, (fbxModel) => {
+                // Ustawienie skali modelu
+                fbxModel.scale.set(0.05, 0.05, 0.05);
+
+                // --- DODAJ TĘ LINIĘ, ABY PRZESUNĄĆ MODEL W DÓŁ ---
+                fbxModel.position.y = -5;
+
+                // Pętla ustawiająca cienie
+                fbxModel.traverse((child) => {
+                    if (child.isMesh) {
+                        child.castShadow = false;
+                        child.receiveShadow = false;
+                    }
+                });
+
+                lastBack = fbxModel;
+
+                // Dodanie modelu do sceny
+                scene.add(fbxModel);
+            });
+        }
+
+        
+        window.addBase = addBase;
+        window.addFront = addFront;
+        window.addBack = addBack;
+
+        function animate() {
+            requestAnimationFrame(animate);
+            controls.update();
+            renderer.render(scene, camera);
+        }
+
+        // 4. AKTUALIZACJA ROZMIARU (opcjonalne, ale zalecane)
+        // Jeśli chcesz, aby scena była responsywna i zmieniała rozmiar
+        // razem z oknem przeglądarki, musisz zaktualizować tę funkcję.
+        // Na razie jest ona statyczna (800x600px), więc ten kod nie jest niezbędny,
+        // ale to dobra praktyka.
+        window.addEventListener('resize', () => {
+            // Aktualizacja proporcji kamery na podstawie rozmiaru pojemnika
+            camera.aspect = container.clientWidth / container.clientHeight;
+            camera.updateProjectionMatrix();
+
+            // Aktualizacja rozmiaru renderera
+            renderer.setSize(container.clientWidth, container.clientHeight);
+        });
+
+        animate();
+    </script>
+
+</html>
